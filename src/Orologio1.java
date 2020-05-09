@@ -8,6 +8,8 @@ public class Orologio1 {
     private JLabel ora;
     private JLabel min;
     private JLabel sec;
+    private JLabel mese;
+    private JLabel giorno;
     private String y;
     private String d;
     private String mh;
@@ -20,13 +22,15 @@ public class Orologio1 {
     public Orologio1() {
 
         y=String.valueOf(Calendar.getInstance().get(Calendar.YEAR));
-        mh=String.valueOf(Calendar.getInstance().get(Calendar.MONTH));
+        mh=String.valueOf(Calendar.getInstance().get(Calendar.MONTH)+1);
         d=String.valueOf(Calendar.getInstance().get(Calendar.DAY_OF_MONTH));
         h=String.valueOf(Calendar.getInstance().get(Calendar.HOUR));
         m=String.valueOf(Calendar.getInstance().get(Calendar.MINUTE));
         s=String.valueOf(Calendar.getInstance().get(Calendar.SECOND));
 
         anno.setText(y);
+        mese.setText(mh);
+        giorno.setText(d);
         ora.setText(h);
         min.setText(m);
         sec.setText(s);
