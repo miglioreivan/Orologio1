@@ -8,8 +8,6 @@ public class Orologio1 {
     private JPanel orologio;
     private JLabel anno;
     private JLabel ora;
-    private JLabel min;
-    private JLabel sec;
     private String y;
     private String d;
     private String h;
@@ -34,9 +32,7 @@ public class Orologio1 {
             s = String.valueOf(Calendar.getInstance().get(Calendar.SECOND));
 
             anno.setText(d + " " + sdf.format(rightNow.getTime()) + " " + y);
-            ora.setText(h);
-            min.setText(m);
-            sec.setText(s);
+            ora.setText(h+":"+m+":"+s);
         });
         updateTimer.start();
 
