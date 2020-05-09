@@ -23,23 +23,20 @@ public class Orologio1 {
     public Orologio1() {
 
 
-        updateTimer = new Timer(DELAY, new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
+        updateTimer = new Timer(DELAY, e -> {
 
-                java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("MMMM");
+            java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("MMMM");
 
-                y = String.valueOf(Calendar.getInstance().get(Calendar.YEAR));
-                h = String.valueOf(Calendar.getInstance().get(Calendar.HOUR));
-                d = String.valueOf(Calendar.getInstance().get(Calendar.DAY_OF_MONTH));
-                m = String.valueOf(Calendar.getInstance().get(Calendar.MINUTE));
-                s = String.valueOf(Calendar.getInstance().get(Calendar.SECOND));
+            y = String.valueOf(Calendar.getInstance().get(Calendar.YEAR));
+            h = String.valueOf(Calendar.getInstance().get(Calendar.HOUR));
+            d = String.valueOf(Calendar.getInstance().get(Calendar.DAY_OF_MONTH));
+            m = String.valueOf(Calendar.getInstance().get(Calendar.MINUTE));
+            s = String.valueOf(Calendar.getInstance().get(Calendar.SECOND));
 
-                anno.setText(d + " " + sdf.format(rightNow.getTime()) + " " + y);
-                ora.setText(h);
-                min.setText(m);
-                sec.setText(s);
-            }
+            anno.setText(d + " " + sdf.format(rightNow.getTime()) + " " + y);
+            ora.setText(h);
+            min.setText(m);
+            sec.setText(s);
         });
         updateTimer.start();
 
