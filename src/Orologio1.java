@@ -1,4 +1,6 @@
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -8,32 +10,38 @@ public class Orologio1 {
     private JLabel ora;
     private JLabel min;
     private JLabel sec;
-    private JLabel mese;
-    private JLabel giorno;
     private String y;
     private String d;
-    private String mh;
     private String h;
     private String m;
     private String s;
+    Timer updateTimer;
+    int DELAY = 100;
 
-    Date dateOne = new Date();
+    Calendar rightNow = Calendar.getInstance();
 
     public Orologio1() {
 
-        y=String.valueOf(Calendar.getInstance().get(Calendar.YEAR));
-        mh=String.valueOf(Calendar.getInstance().get(Calendar.MONTH)+1);
-        d=String.valueOf(Calendar.getInstance().get(Calendar.DAY_OF_MONTH));
-        h=String.valueOf(Calendar.getInstance().get(Calendar.HOUR));
-        m=String.valueOf(Calendar.getInstance().get(Calendar.MINUTE));
-        s=String.valueOf(Calendar.getInstance().get(Calendar.SECOND));
 
-        anno.setText(y);
-        mese.setText(mh);
-        giorno.setText(d);
-        ora.setText(h);
-        min.setText(m);
-        sec.setText(s);
+        updateTimer = new Timer(DELAY, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("MMMM");
+
+                y = String.valueOf(Calendar.getInstance().get(Calendar.YEAR));
+                h = String.valueOf(Calendar.getInstance().get(Calendar.HOUR));
+                d = String.valueOf(Calendar.getInstance().get(Calendar.DAY_OF_MONTH));
+                m = String.valueOf(Calendar.getInstance().get(Calendar.MINUTE));
+                s = String.valueOf(Calendar.getInstance().get(Calendar.SECOND));
+
+                anno.setText(d + " " + sdf.format(rightNow.getTime()) + " " + y);
+                ora.setText(h);
+                min.setText(m);
+                sec.setText(s);
+            }
+        });
+        updateTimer.start();
 
     }
 
